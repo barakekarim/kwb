@@ -22,7 +22,7 @@
  */
 
 export const musicData = {
-  instagramUrl: "https://www.instagram.com/barake____",
+  instagramUrl: "https://www.instagram.com/barake.music",
 
   bio: "BARAKE is an artist who has performed across New York City, Boston, Washington D.C., and London, playing for crowds of up to 4,000 and sharing stages with artists including Meduza, Francis Mercier, &Friends, Notre Dame, and Luch. A resident at 5ESS1ONS and curator of his own BARAKE 1NVITE5 events, he brings people together through high-energy disco and melodic sounds — creating memorable experiences wherever he goes.",
 
