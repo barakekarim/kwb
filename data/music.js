@@ -27,11 +27,11 @@ export const musicData = {
   bio: "BARAKE is an artist who has performed across New York City, Boston, Washington D.C., and London, playing for crowds of up to 4,000 and sharing stages with artists including Meduza, Francis Mercier, &Friends, Notre Dame, and Luch. A resident at 5ESS1ONS and curator of his own BARAKE 1NVITE5 events, he brings people together through high-energy disco and melodic sounds — creating memorable experiences wherever he goes.",
 
   nextShow: {
-    date: "SEP 5",
-    fullDate: "September 5, 2026",
-    venue: "Boat Party",
+    date: "SEP 19",
+    fullDate: "September 19, 2026",
+    venue: "51",
     city: "Boston, USA",
-    ticketUrl: "https://posh.vip/e/5ess1ons-boat-party-sep-5?t=whatsapp",
+    ticketUrl: "https://posh.vip/e/5ess1ons-x-monobase-sep-19?t=linktree",
     status: "tickets",
   },
 
@@ -60,14 +60,6 @@ export const tourDates = [
     status: "tickets",
   },
   {
-    date: "SEP 25",
-    fullDate: "September 25, 2026",
-    venue: "The Arcade",
-    city: "Washington DC, USA",
-    ticketUrl: null,
-    status: "soon",
-  },
-  {
     date: "OCT 9",
     fullDate: "October 9, 2026",
     venue: "The Arcade",
@@ -77,13 +69,12 @@ export const tourDates = [
     status: "tickets",
   },
   {
-    // Ticket link not out yet — paste it here and flip status to "tickets".
     date: "OCT 10",
     fullDate: "October 10, 2026",
     venue: "A.I. Warehouse",
     city: "Washington DC, USA",
-    ticketUrl: null,
-    status: "soon",
+    ticketUrl: "https://link.dice.fm/V2a8f7975630",
+    status: "tickets",
   },
   {
     date: "OCT 29",

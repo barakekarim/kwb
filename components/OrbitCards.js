@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import DomainIcon from "./DomainIcon";
+import OuyounaPortal from "./OuyounaPortal";
 
 // A small chevron for the "go" affordance on each portal button.
 function Chevron() {
@@ -41,6 +42,19 @@ function DomainPortal({ domain, layout }) {
   );
 
   if (!domain.href) return <span className={cls}>{inner}</span>;
+  if (/^https?:\/\//.test(domain.href)) {
+    return (
+      <a
+        className={cls}
+        href={domain.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={domain.label}
+      >
+        {inner}
+      </a>
+    );
+  }
   return (
     <Link className={cls} href={domain.href} aria-label={domain.label}>
       {inner}
@@ -48,13 +62,17 @@ function DomainPortal({ domain, layout }) {
   );
 }
 
-// Desktop: the four buttons pinned to the corners around the identity.
+// Desktop: three corner buttons + the full-area Ouyouna portal (bottom right).
 export function OrbitLayer({ domains }) {
   return (
     <nav className="portals" aria-label="Sections">
-      {domains.map((d) => (
-        <DomainPortal key={d.key} domain={d} layout="corner" />
-      ))}
+      {domains.map((d) =>
+        d.key === "vision" ? (
+          <OuyounaPortal key={d.key} domain={d} />
+        ) : (
+          <DomainPortal key={d.key} domain={d} layout="corner" />
+        )
+      )}
     </nav>
   );
 }

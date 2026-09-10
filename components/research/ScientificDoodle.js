@@ -46,6 +46,11 @@ const shapes = {
   },
   // Landolt C optotype
   landoltC: { vb: "0 0 48 48", d: "M39 34 A16 16 0 1 1 39 14" },
+  // almond eye with iris + pupil
+  eye: {
+    vb: "0 0 52 28",
+    d: "M3 14C15 1 37 1 49 14C37 27 15 27 3 14M26 6a8 8 0 1 1 0 16a8 8 0 1 1 0-16M26 11a3 3 0 1 1 0 6a3 3 0 1 1 0-6",
+  },
   // biological trace with a spike
   trace: {
     vb: "0 0 148 40",

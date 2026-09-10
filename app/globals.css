@@ -138,12 +138,6 @@ a {
   left: -12vw;
   width: 38vw;
 }
-.mf--vision {
-  bottom: -5vw;
-  right: -6vw;
-  width: 33vw;
-  color: rgba(150, 165, 96, 0.55);
-}
 
 /* ---- corner nav buttons ---- */
 .portals {
@@ -210,10 +204,217 @@ a {
   border-color: rgba(242, 240, 231, 0.4);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(242, 240, 231, 0.12);
 }
-.portals .portal--vision:hover,
-.portals .portal--vision:focus-visible {
-  border-color: rgba(120, 155, 130, 0.42);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 0 26px rgba(53, 109, 243, 0.12);
+
+/* ================================================================
+   OUYOUNA portal — bottom right. The whole visual area is the link:
+   lens -> refracting rays -> glowing focal point -> retinal target,
+   cropped by the viewport edges. A background portal, lighter than
+   the centre content.
+   ================================================================ */
+.ouy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: clamp(340px, 38vw, 600px);
+  aspect-ratio: 520 / 340;
+  overflow: hidden;
+  pointer-events: auto;
+  text-decoration: none;
+}
+.ouy__vis {
+  position: absolute;
+  inset: 0;
+  color: rgba(188, 201, 50, 0.4);
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(188, 201, 50, 0.06));
+  transition: color 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+}
+.ouy__vis svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ouy-axis {
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.32;
+}
+.ouy-lens {
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+.ouy-lens-axis {
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.38;
+}
+.ouy-ray {
+  stroke: currentColor;
+  stroke-width: 1.3;
+  opacity: 0.62;
+  transition: opacity 0.45s ease, stroke 0.45s ease, stroke-width 0.45s ease;
+}
+.ouy-ray--cobalt {
+  stroke: rgba(53, 109, 243, 0.5);
+}
+.ouy-ray--gold {
+  stroke: rgba(245, 201, 107, 0.5);
+}
+.ouy-ray--key {
+  stroke: rgba(53, 109, 243, 0.28);
+}
+.ouy-ring {
+  stroke: currentColor;
+  stroke-width: 1.3;
+  opacity: 0.48;
+  transition: opacity 0.45s ease, stroke 0.45s ease, stroke-width 0.45s ease;
+}
+.ouy-ring--cobalt {
+  stroke: rgba(53, 109, 243, 0.42);
+}
+.ouy-ring-inner {
+  stroke: currentColor;
+  stroke-width: 1.4;
+  opacity: 0.68;
+}
+.ouy-guide {
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.22;
+}
+.ouy-guide--cobalt {
+  stroke: rgba(53, 109, 243, 0.4);
+  opacity: 0.5;
+}
+.ouy-target-dot,
+.ouy-focus-dot {
+  fill: currentColor;
+}
+.ouy-focus-ring {
+  stroke: rgba(245, 201, 107, 0.6);
+  stroke-width: 1.2;
+}
+.ouy-focus {
+  filter: drop-shadow(0 0 5px rgba(245, 201, 107, 0.3));
+  transition: filter 0.45s ease;
+}
+.ouy-focus-glow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ouyPulse 3.8s ease-in-out infinite;
+}
+@keyframes ouyPulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* the Ouyouna button — over / slightly above the retinal target */
+.ouy__btn {
+  position: absolute;
+  top: 13%;
+  left: 43%;
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 15px;
+  border-radius: 16px;
+  border: 1px solid rgba(233, 240, 210, 0.1);
+  background: rgba(9, 11, 7, 0.5);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.34);
+  transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* hover / focus anywhere over the visual area */
+.ouy:hover .ouy__vis,
+.ouy:focus-visible .ouy__vis {
+  color: rgba(188, 201, 50, 0.68);
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(188, 201, 50, 0.16));
+}
+.ouy:hover .ouy-ray,
+.ouy:focus-visible .ouy-ray {
+  opacity: 0.95;
+}
+.ouy:hover .ouy-ray--key,
+.ouy:focus-visible .ouy-ray--key {
+  stroke: rgba(90, 139, 255, 0.9);
+  stroke-width: 1.7;
+  opacity: 1;
+}
+.ouy:hover .ouy-ray--cobalt,
+.ouy:focus-visible .ouy-ray--cobalt {
+  stroke: rgba(90, 139, 255, 0.82);
+}
+.ouy:hover .ouy-ring,
+.ouy:focus-visible .ouy-ring {
+  opacity: 0.9;
+  stroke-width: 1.5;
+}
+.ouy:hover .ouy-ring--cobalt,
+.ouy:focus-visible .ouy-ring--cobalt {
+  stroke: rgba(90, 139, 255, 0.85);
+}
+.ouy:hover .ouy-focus,
+.ouy:focus-visible .ouy-focus {
+  filter: drop-shadow(0 0 15px rgba(245, 201, 107, 0.7));
+}
+.ouy:hover .ouy-focus-glow,
+.ouy:focus-visible .ouy-focus-glow {
+  animation-duration: 1.8s;
+}
+.ouy:hover .ouy__btn,
+.ouy:focus-visible .ouy__btn {
+  border-color: rgba(120, 155, 130, 0.55);
+  background: rgba(9, 11, 7, 0.62);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 0 26px rgba(53, 109, 243, 0.14);
+}
+.ouy:hover .portal__icon,
+.ouy:focus-visible .portal__icon {
+  border-color: rgba(120, 155, 130, 0.6);
+  color: #9fce46;
+}
+.ouy:hover .portal__go,
+.ouy:focus-visible .portal__go {
+  border-color: rgba(120, 155, 130, 0.6);
+  color: #9fce46;
+}
+.ouy:hover .portal__label,
+.ouy:focus-visible .portal__label {
+  color: #fff;
+}
+.ouy:focus-visible {
+  outline: none;
+}
+.ouy:focus-visible .ouy__btn {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1240px) {
+  .ouy {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ouy__vis,
+  .ouy-ray,
+  .ouy-ring,
+  .ouy-focus,
+  .ouy-focus-glow,
+  .ouy__btn {
+    transition: none;
+    animation: none;
+  }
 }
 
 .portal__icon {
@@ -333,26 +534,6 @@ a {
   filter: drop-shadow(0 0 14px rgba(242, 240, 231, 0.18));
 }
 
-/* VISION CARE — olive -> cobalt + olive */
-.portal--vision:hover .portal__icon,
-.portal--vision:focus-visible .portal__icon {
-  border-color: rgba(120, 155, 130, 0.7);
-  color: #9fce46;
-  box-shadow: 0 0 24px rgba(53, 109, 243, 0.22);
-}
-.portal--vision:hover .portal__go,
-.portal--vision:focus-visible .portal__go {
-  border-color: rgba(120, 155, 130, 0.7);
-  color: #9fce46;
-}
-.hero:has(.portal--vision:hover) .mf--vision,
-.hero:has(.portal--vision:focus-visible) .mf--vision {
-  color: rgba(188, 201, 50, 0.62);
-  --mf-2: rgba(53, 109, 243, 0.85);
-  opacity: 1;
-  filter: drop-shadow(0 0 16px rgba(53, 109, 243, 0.3));
-}
-
 /* ---- CD colour + motion ---- */
 .mf__ring--cobalt {
   stroke: var(--d-cobalt);
@@ -395,48 +576,6 @@ a {
 .mf--bio .mf__route {
   stroke: var(--d-yellow);
   opacity: 0.85;
-}
-
-/* OUYOUNA — hand-drawn glasses + a refraction ray diagram */
-.mf__ray {
-  animation: mfMarch 2.6s linear infinite;
-}
-.mf__ray--cobalt {
-  stroke: var(--d-cobalt);
-}
-.mf__ray--warm {
-  stroke: var(--d-yellow);
-}
-.mf__rays path:nth-child(2),
-.mf__rays path:nth-child(6) {
-  animation-delay: 0.25s;
-}
-.mf__rays path:nth-child(3),
-.mf__rays path:nth-child(7) {
-  animation-delay: 0.5s;
-}
-.mf__rays path:nth-child(4),
-.mf__rays path:nth-child(8) {
-  animation-delay: 0.75s;
-}
-.mf__focus {
-  stroke: var(--mf-2);
-}
-.mf__specs {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: mfBob 6.5s ease-in-out infinite;
-}
-.hero:has(.portal--vision:hover) .mf__ray,
-.hero:has(.portal--vision:focus-visible) .mf__ray {
-  animation-duration: 1s;
-}
-.hero:has(.portal--vision:hover) .mf__specs,
-.hero:has(.portal--vision:focus-visible) .mf__specs {
-  animation-duration: 3.4s;
-}
-.hero:has(.portal--vision:hover) .mf__ping {
-  animation-duration: 1.7s;
 }
 
 /* ---- restrained motion ---- */
@@ -587,15 +726,6 @@ a {
 @keyframes mfMarch {
   to {
     stroke-dashoffset: -28;
-  }
-}
-@keyframes mfBob {
-  0%,
-  100% {
-    transform: translateY(1.5px) rotate(-0.6deg);
-  }
-  50% {
-    transform: translateY(-1.5px) rotate(0.6deg);
   }
 }
 @keyframes mfBeat {
@@ -848,12 +978,11 @@ a {
   .mf__spin,
   .mf__wave,
   .mf__bars,
-  .mf__ray,
-  .mf__specs,
   .mf__ping,
   .mf__fundus,
   .mf__vessels path,
-  .mf__route {
+  .mf__route,
+  .ouy-focus-glow {
     animation: none !important;
   }
 }
@@ -2125,26 +2254,32 @@ a.m-cta:focus-visible {
   outline-offset: 3px;
 }
 
-/* ---- Section 1 — hero (editorial split) ---- */
+/* ---- Section 1 — hero (centred, with interactive marks) ---- */
 .rhero {
-  padding: clamp(24px, 6vw, 56px) 0 clamp(6px, 1.4vw, 16px);
+  position: relative;
+  padding: clamp(28px, 6vw, 60px) 0 clamp(8px, 1.6vw, 18px);
+  text-align: center;
 }
 .rhero__text {
+  position: relative;
+  z-index: 2;
   min-width: 0;
+  max-width: 780px;
+  margin-inline: auto;
 }
 .rhero__q {
-  margin-top: clamp(18px, 3vw, 30px);
+  margin: clamp(14px, 2.4vw, 22px) auto 0;
   font-size: clamp(2rem, 4.4vw, 3.8rem);
   font-weight: 750;
   line-height: 1.06;
   letter-spacing: -0.025em;
   color: var(--warm);
-  max-width: 16ch;
+  max-width: 20ch;
   text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
 }
 .rhero__support {
-  margin-top: clamp(14px, 2.2vw, 20px);
-  max-width: 54ch;
+  margin: clamp(14px, 2.2vw, 20px) auto 0;
+  max-width: 62ch;
   font-size: clamp(0.96rem, 1.3vw, 1.06rem);
   line-height: 1.62;
   color: rgba(242, 240, 231, 0.74);
@@ -2154,11 +2289,143 @@ a.m-cta:focus-visible {
   color: rgba(242, 240, 231, 0.82);
 }
 .rhero__note {
-  margin-top: clamp(20px, 3.2vw, 30px);
-  max-width: 60ch;
+  margin: clamp(20px, 3.2vw, 30px) auto 0;
+  max-width: 68ch;
   font-size: clamp(0.84rem, 1.15vw, 0.93rem);
   line-height: 1.6;
   color: rgba(242, 240, 231, 0.48);
+}
+
+/* interactive instrument row — retina / eye / glasses */
+.rhero__marks {
+  margin-top: clamp(16px, 2.4vw, 22px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(18px, 3vw, 34px);
+}
+.rhero__scatter {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.rhero__scatter .rhero__mark {
+  position: absolute;
+  pointer-events: auto;
+  opacity: 0.16;
+}
+.rhero__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(42px, 5vw, 54px);
+  height: clamp(42px, 5vw, 54px);
+  color: rgba(184, 201, 47, 0.5);
+  transition: color 0.42s ease, transform 0.42s ease, opacity 0.42s ease;
+}
+.rhero__mark--sm {
+  width: clamp(30px, 3.4vw, 40px);
+  height: clamp(30px, 3.4vw, 40px);
+}
+.rhero__mark svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.rhero__mark svg path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 0;
+}
+/* a scope reticle that focuses in on hover */
+.rhero__mark::before,
+.rhero__mark::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0;
+  transform: scale(1.55);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+.rhero__mark::after {
+  inset: -13px;
+  border-style: dashed;
+}
+.rhero__mark:hover,
+.rhero__mark:focus-visible {
+  color: var(--accent);
+  opacity: 1;
+  transform: translateY(-3px) scale(1.12);
+  outline: none;
+}
+.rhero__mark:hover::before,
+.rhero__mark:focus-visible::before {
+  opacity: 0.9;
+  transform: scale(1);
+}
+.rhero__mark:hover::after,
+.rhero__mark:focus-visible::after {
+  opacity: 0.5;
+  transform: scale(1) rotate(45deg);
+}
+.rhero__mark--retina:hover svg path,
+.rhero__mark--cornea:hover svg path {
+  animation: rmDraw 1.1s ease forwards;
+}
+.rhero__mark--glasses:hover svg {
+  animation: rmWobble 0.6s ease-in-out;
+}
+.rhero__mark--eye:hover svg {
+  animation: rmBlink 0.5s ease;
+}
+@keyframes rmDraw {
+  from {
+    stroke-dashoffset: 300;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes rmWobble {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(-7deg);
+  }
+  65% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes rmBlink {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.12);
+  }
+}
+@media (max-width: 900px) {
+  .rhero__scatter {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rhero__mark,
+  .rhero__mark::before,
+  .rhero__mark::after,
+  .rhero__mark svg,
+  .rhero__mark svg path {
+    transition: none;
+    animation: none;
+  }
 }
 .rhero__affil {
   margin-top: clamp(22px, 4vw, 34px);
@@ -3282,11 +3549,6 @@ a.m-cta:focus-visible {
   color: rgba(242, 240, 231, 0.3);
 }
 
-@media (max-width: 1000px) {
-  .rhero__q {
-    max-width: 20ch;
-  }
-}
 @media (max-width: 620px) {
   .research__herowrap {
     padding-inline: clamp(20px, 5vw, 24px);
@@ -3315,23 +3577,236 @@ a.m-cta:focus-visible {
 .vcare__wrap {
   position: relative;
   z-index: 3;
-  max-width: 940px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: clamp(40px, 10vw, 96px) clamp(22px, 6vw, 72px)
-    clamp(48px, 12vw, 120px);
+  padding: clamp(52px, 13vw, 120px) clamp(22px, 6vw, 72px)
+    clamp(56px, 14vw, 130px);
+  text-align: center;
 }
 .vcare__q {
-  margin-top: clamp(14px, 3vw, 26px);
+  margin: clamp(14px, 2.6vw, 24px) auto 0;
   font-size: clamp(2rem, 4.4vw, 3.6rem);
   font-weight: 750;
   line-height: 1.08;
   letter-spacing: -0.025em;
-  max-width: 18ch;
+  max-width: 20ch;
 }
 .vcare__support {
-  margin-top: clamp(14px, 2.4vw, 22px);
+  margin: clamp(14px, 2.4vw, 22px) auto 0;
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   line-height: 1.6;
   color: rgba(242, 240, 231, 0.62);
   max-width: 46ch;
+}
+
+/* colourful, always-moving optical marks around the Ouyouna hero */
+.vcare__marks {
+  margin-top: clamp(18px, 2.8vw, 28px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+}
+.vcare__scatter {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.vcare__scatter .vc-mark {
+  position: absolute;
+  pointer-events: auto;
+  opacity: 0.14;
+}
+.vc-mark {
+  --ink: rgba(184, 201, 47, 0.75);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(42px, 5vw, 56px);
+  height: clamp(42px, 5vw, 56px);
+  color: var(--ink);
+  opacity: 0.72;
+  transition: color 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+  animation: vcFloat 5s ease-in-out infinite;
+}
+.vc-mark--sm {
+  width: clamp(30px, 3.4vw, 40px);
+  height: clamp(30px, 3.4vw, 40px);
+}
+.vcare__marks .vc-mark:nth-child(2) {
+  animation-delay: -1s;
+}
+.vcare__marks .vc-mark:nth-child(3) {
+  animation-delay: -2s;
+}
+.vcare__marks .vc-mark:nth-child(4) {
+  animation-delay: -3s;
+}
+.vcare__marks .vc-mark:nth-child(5) {
+  animation-delay: -4s;
+}
+.vc-mark--cobalt {
+  --ink: var(--d-cobalt);
+}
+.vc-mark--pink {
+  --ink: var(--d-pink);
+}
+.vc-mark--yellow {
+  --ink: var(--d-yellow);
+}
+.vc-mark--green {
+  --ink: var(--d-green);
+}
+.vc-mark--orange {
+  --ink: var(--d-orange);
+}
+.vc-mark--olive {
+  --ink: rgba(184, 201, 47, 0.9);
+}
+.vc-mark svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.vc-mark svg path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 0;
+}
+/* ambient, always-on motion per type */
+.vc-mark--wobble svg {
+  animation: rmWobble 3.6s ease-in-out infinite;
+}
+.vc-mark--blink svg {
+  animation: vcBlink 5.5s ease-in-out infinite;
+}
+.vc-mark--pulse svg {
+  animation: vcPulse 3.4s ease-in-out infinite;
+}
+.vc-mark--spin svg {
+  animation: mfSpin 16s linear infinite;
+}
+.vc-mark--march svg path {
+  animation: mfMarch 1.9s linear infinite;
+}
+.vc-mark--draw svg path {
+  animation: vcDraw 6s ease-in-out infinite;
+}
+/* scope reticle */
+.vc-mark::before,
+.vc-mark::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0;
+  transform: scale(1.55);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+.vc-mark::after {
+  inset: -13px;
+  border-style: dashed;
+}
+.vc-mark:hover,
+.vc-mark:focus-visible {
+  opacity: 1;
+  transform: scale(1.16);
+  outline: none;
+}
+.vcare__scatter .vc-mark:hover,
+.vcare__scatter .vc-mark:focus-visible {
+  opacity: 1;
+}
+.vc-mark:hover::before,
+.vc-mark:focus-visible::before {
+  opacity: 0.95;
+  transform: scale(1);
+}
+.vc-mark:hover::after,
+.vc-mark:focus-visible::after {
+  opacity: 0.55;
+  transform: scale(1) rotate(45deg);
+}
+.vc-mark--wobble:hover svg {
+  animation-duration: 1.1s;
+}
+.vc-mark--blink:hover svg {
+  animation-duration: 1.7s;
+}
+.vc-mark--pulse:hover svg {
+  animation-duration: 1s;
+}
+.vc-mark--spin:hover svg {
+  animation-duration: 4s;
+}
+.vc-mark--march:hover svg path {
+  animation-duration: 0.7s;
+}
+.vc-mark--draw:hover svg path {
+  animation-duration: 1.6s;
+}
+@keyframes vcFloat {
+  0%,
+  100% {
+    translate: 0 3px;
+  }
+  50% {
+    translate: 0 -3px;
+  }
+}
+@keyframes vcBlink {
+  0%,
+  88%,
+  100% {
+    transform: scaleY(1);
+  }
+  93% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes vcPulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+@keyframes vcDraw {
+  0% {
+    stroke-dashoffset: 300;
+    opacity: 0.4;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.4;
+  }
+}
+@media (max-width: 900px) {
+  .vcare__scatter {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vc-mark,
+  .vc-mark svg,
+  .vc-mark svg path,
+  .vc-mark::before,
+  .vc-mark::after {
+    animation: none;
+    transition: none;
+  }
 }

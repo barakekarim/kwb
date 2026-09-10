@@ -6,7 +6,9 @@
  *   music   — a spinning CD (+ a separate 128 BPM wavebeat)
  *   research — a small colourful fundus image
  *   bio     — a wireframe globe, two place-markers, a route arc
- *   vision  — hand-drawn glasses + a refraction ray diagram
+ *
+ * (Ouyouna / bottom-right has its own component, <OuyounaPortal />, because
+ * its whole visual area is a link.)
  *
  * Everything strokes `currentColor` (the portal animates it); `.mf__cobalt`
  * parts take a second colour via `--mf-2`.
@@ -236,91 +238,6 @@ export default function MotifField() {
         </svg>
       </span>
 
-      {/* -------- OUYOUNA — bottom right: hand-drawn glasses + refraction -------- */}
-      <span className="mf__q mf--vision">
-        <svg viewBox="0 0 340 280" strokeWidth="1.5" {...STROKE}>
-          <defs>
-            <filter id="mfHand" x="-25%" y="-25%" width="150%" height="150%">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.028"
-                numOctaves="2"
-                seed="7"
-                result="n"
-              />
-              <feDisplacementMap
-                in="SourceGraphic"
-                in2="n"
-                scale="3"
-                xChannelSelector="R"
-                yChannelSelector="G"
-              />
-            </filter>
-          </defs>
-
-          {/* optical axis */}
-          <line
-            x1="4"
-            y1="120"
-            x2="312"
-            y2="120"
-            strokeWidth="1"
-            strokeDasharray="2 9"
-            opacity="0.5"
-          />
-
-          {/* refraction — parallel light in, converging through the lens */}
-          <g className="mf__rays">
-            <path className="mf__ray" strokeDasharray="5 10" d="M4 80H120" />
-            <path
-              className="mf__ray mf__ray--cobalt"
-              strokeDasharray="5 10"
-              d="M4 100H120"
-            />
-            <path className="mf__ray" strokeDasharray="5 10" d="M4 140H120" />
-            <path
-              className="mf__ray mf__ray--warm"
-              strokeDasharray="5 10"
-              d="M4 160H120"
-            />
-            <path
-              className="mf__ray"
-              strokeDasharray="5 10"
-              d="M150 84L256 120"
-            />
-            <path
-              className="mf__ray mf__ray--cobalt"
-              strokeDasharray="5 10"
-              d="M150 102L256 120"
-            />
-            <path
-              className="mf__ray"
-              strokeDasharray="5 10"
-              d="M150 138L256 120"
-            />
-            <path
-              className="mf__ray mf__ray--warm"
-              strokeDasharray="5 10"
-              d="M150 158L258 121"
-            />
-          </g>
-
-          {/* focal point */}
-          <g className="mf__focus" transform="translate(257 120)">
-            <circle className="mf__ping" r="11" />
-            <circle r="3.4" />
-          </g>
-
-          {/* hand-drawn glasses */}
-          <g className="mf__specs" filter="url(#mfHand)">
-            <path d="M150 78C132 78 118 96 118 120C118 146 132 162 150 162C168 162 182 146 182 120C182 96 168 78 150 78Z" />
-            <path d="M232 78C214 78 200 96 200 120C200 146 214 162 232 162C250 162 264 146 264 120C264 96 250 78 232 78Z" />
-            <path d="M182 104C190 96 193 96 200 104" />
-            <path d="M118 113C108 108 100 108 92 115" />
-            <path d="M264 110C286 104 302 92 324 72" />
-          </g>
-        </svg>
-      </span>
     </div>
   );
 }

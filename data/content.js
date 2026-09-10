@@ -24,15 +24,16 @@ export const socials = [
   },
 ];
 
-// The four orbiting cards. `pos` places the card in a corner: tl, tr, bl, br.
-// `href` is optional — point it at a section or page when you have one.
+// The four domain portals. `pos` places each in a corner on desktop
+// (tl, tr, bl, br). Array ORDER is the stacked reading order on mobile:
+// Bio -> Research -> Music -> Ouyouna.
 export const domains = [
   {
-    key: "music",
-    label: "Music",
-    pos: "tl",
-    blurb: "Composing, producing, and thinking in sound.",
-    href: "/music",
+    key: "bio",
+    label: "Bio",
+    pos: "bl",
+    blurb: "The story so far.",
+    href: "/bio",
   },
   {
     key: "research",
@@ -42,17 +43,17 @@ export const domains = [
     href: "/research",
   },
   {
-    key: "bio",
-    label: "Bio",
-    pos: "bl",
-    blurb: "The story so far.",
-    href: "/bio",
+    key: "music",
+    label: "Music",
+    pos: "tl",
+    blurb: "Composing, producing, and thinking in sound.",
+    href: "/music",
   },
   {
     key: "vision",
     label: "Ouyouna",
     pos: "br",
     blurb: "Optics, the eye, and how we see.",
-    href: "/vision-care",
+    href: "https://ouyouna.com",
   },
 ];
