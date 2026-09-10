@@ -1715,37 +1715,102 @@ a.m-cta:focus-visible {
 
 /* ---------- Music responsive ---------- */
 @media (max-width: 900px) {
+  .music__wrap {
+    padding-bottom: clamp(52px, 14vw, 88px);
+  }
   .m-heading__scribble {
     display: none;
   }
+  .mhero {
+    padding: clamp(26px, 8vw, 56px) 0 clamp(34px, 8vw, 60px);
+  }
+  .nextshow {
+    padding: clamp(22px, 7vw, 44px) 0;
+  }
+  .tour {
+    padding: clamp(40px, 10vw, 72px) 0 clamp(26px, 7vw, 48px);
+  }
+  .poster {
+    padding: clamp(38px, 10vw, 72px) 0;
+  }
+
+  /* Next show: stacked, flat, full-width tap target */
   .nextshow__card {
     grid-template-columns: 1fr;
     gap: 14px;
     text-align: left;
+    transform: none;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
   }
   .nextshow__act {
-    margin-top: 4px;
+    margin-top: 6px;
+    width: 100%;
+  }
+  .nextshow__arrow {
+    display: none;
+  }
+  .nextshow__act .m-cta {
+    flex: 1;
+    justify-content: center;
+    padding-block: 15px;
   }
 }
+
 @media (max-width: 620px) {
+  .mhero__d--crown,
   .mhero__d--rays,
   .mhero__d--wave {
     display: none;
   }
+
+  /* Hero: single column, centred portrait, full-width Instagram button */
   .mhero__top {
-    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+  .mhero__id {
+    flex-basis: auto;
+    width: 100%;
+    min-width: 0;
+  }
+  .mhero__name {
+    font-size: clamp(2.7rem, 15vw, 4.2rem);
+    transform: rotate(-1.2deg);
+    text-shadow: 3px 3px 0 rgba(53, 109, 243, 0.92),
+      6px 6px 0 rgba(184, 229, 31, 0.3);
+  }
+  .mhero__ig {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 22px;
+    box-shadow: 4px 4px 0 rgba(53, 109, 243, 0.95);
   }
   .mhero__portrait {
-    width: min(280px, 80%);
-    transform: rotate(1.6deg);
+    align-self: center;
+    width: min(300px, 84%);
+    transform: rotate(1.4deg);
   }
+
+  .nextshow__wave {
+    display: none;
+  }
+  .nextshow__card {
+    padding: 22px 20px;
+    clip-path: none;
+  }
+
+  /* Tour rows: flat, crisp colour spine, roomier button */
   .trow {
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "date cta"
       "meta meta";
     row-gap: 8px;
-    clip-path: polygon(0 4%, 99.6% 0, 100% 96%, 0.3% 100%);
+    padding: 14px 16px 14px 22px;
+    transform: none;
+    clip-path: none;
   }
   .trow__date {
     grid-area: date;
@@ -1758,11 +1823,59 @@ a.m-cta:focus-visible {
     grid-area: cta;
     justify-self: end;
   }
+  .trow__cta {
+    padding: 13px 18px;
+  }
   .trow::before {
-    width: 100%;
-    inset: 0 0 auto 0;
-    height: 100%;
-    opacity: 0.12;
+    width: 6px;
+    inset: 0 auto 0 0;
+    opacity: 1;
+  }
+  .trow__star {
+    display: none;
+  }
+
+  /* Poster: flat, no protruding tape */
+  .poster__stage {
+    padding: 14px 0;
+  }
+  .poster__frame,
+  .poster__frame:hover {
+    width: min(420px, 96%);
+    padding: 10px 10px 30px;
+    transform: none;
+  }
+  .poster__tape {
+    display: none;
+  }
+
+  /* Lightbox: tighter, drop the long caption */
+  .lb {
+    padding: 12px;
+  }
+  .lb__cap {
+    display: none;
+  }
+  .lb__img {
+    max-height: 82vh;
+    box-shadow: 0 0 0 5px #f2f0e7, 0 18px 44px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (max-width: 400px) {
+  .music__wrap {
+    padding-inline: 16px;
+  }
+  .mhero__name {
+    font-size: clamp(2.2rem, 17vw, 3.3rem);
+    text-shadow: 2px 2px 0 rgba(53, 109, 243, 0.92),
+      4px 4px 0 rgba(184, 229, 31, 0.3);
+  }
+  .nextshow__date {
+    font-size: 2rem;
+  }
+  .nextshow__card {
+    padding: 18px 16px;
   }
 }
 
