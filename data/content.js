@@ -1,7 +1,7 @@
 export const profile = {
-  name: "Karim Barake",
+  name: "Karim W. Barake",
   eyebrow: "Hi, I'm",
-  tagline: "Building bridges between sound, science, storytelling, and sight.",
+  tagline: "and i'm on a mission to build a world that sees better",
   email: "barakekarim@gmail.com",
 };
 
@@ -11,16 +11,6 @@ export const socials = [
     key: "linkedin",
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/karim-barake/",
-  },
-  {
-    key: "instagram",
-    label: "Instagram",
-    href: "https://www.instagram.com/karimbarake_/",
-  },
-  {
-    key: "disc",
-    label: "DJ — Instagram",
-    href: "https://www.instagram.com/barake____/",
   },
   {
     key: "orcid",
@@ -42,27 +32,27 @@ export const domains = [
     label: "Music",
     pos: "tl",
     blurb: "Composing, producing, and thinking in sound.",
-    href: "",
+    href: "/music",
   },
   {
     key: "research",
     label: "Research",
     pos: "tr",
     blurb: "Asking questions and following the data.",
-    href: "",
+    href: "/research",
   },
   {
     key: "bio",
     label: "Bio",
     pos: "bl",
     blurb: "The story so far.",
-    href: "",
+    href: "/bio",
   },
   {
     key: "vision",
-    label: "Vision Care",
+    label: "Ouyouna",
     pos: "br",
     blurb: "Optics, the eye, and how we see.",
-    href: "",
+    href: "/vision-care",
   },
 ];

@@ -1,4 +1,4 @@
-# Karim Barake — Personal Website
+# Karim W. Barake — Personal Website
 
 Single-page landing site built with **Next.js** (App Router). A centered
 portrait sits inside a glowing ring, four glass "domain" cards float on a

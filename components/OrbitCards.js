@@ -1,79 +1,70 @@
+import Link from "next/link";
+
 import DomainIcon from "./DomainIcon";
 
-// Dashed orbit ellipse with a few drifting glow-dots (pure declarative SVG).
-function Ellipse() {
-  const dots = [0, 1, 2, 3, 4];
+// A small chevron for the "go" affordance on each portal button.
+function Chevron() {
   return (
-    <div className="orbit" aria-hidden="true">
-      <svg className="orbit__ellipse" viewBox="0 0 1200 560">
-        <defs>
-          <filter id="dotGlow" x="-300%" y="-300%" width="700%" height="700%">
-            <feGaussianBlur stdDeviation="3.5" result="b" />
-            <feMerge>
-              <feMergeNode in="b" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path
-          id="orbitPath"
-          className="orbit__ring"
-          d="M40 280 A560 250 0 1 1 1160 280 A560 250 0 1 1 40 280"
-        />
-        {dots.map((i) => (
-          <circle key={i} className="orbit__dot" r="3.5" filter="url(#dotGlow)">
-            <animateMotion
-              dur={`${17 + i * 3}s`}
-              begin={`-${i * 4}s`}
-              repeatCount="indefinite"
-              rotate="auto"
-            >
-              <mpath href="#orbitPath" />
-            </animateMotion>
-          </circle>
-        ))}
-      </svg>
-    </div>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M9 5l7 7-7 7" />
+    </svg>
   );
 }
 
-function Card({ domain, className = "" }) {
+// One domain button: [icon] LABEL (chevron). Borderless; the whole thing is
+// the link. The large thematic motif lives separately in <MotifField />.
+function DomainPortal({ domain, layout }) {
+  const cls = [
+    "portal",
+    `portal--${domain.key}`,
+    layout === "static" ? "portal--static" : `portal--${domain.pos}`,
+  ].join(" ");
+
   const inner = (
     <>
-      <DomainIcon name={domain.key} />
-      <span className="orbit__label">{domain.label}</span>
+      <span className="portal__icon">
+        <DomainIcon name={domain.key} />
+      </span>
+      <span className="portal__label">{domain.label}</span>
+      <span className="portal__go">
+        <Chevron />
+      </span>
     </>
   );
-  const cls = `orbit__card orbit__card--${domain.pos} ${className}`.trim();
-  return domain.href ? (
-    <a className={cls} href={domain.href}>
+
+  if (!domain.href) return <span className={cls}>{inner}</span>;
+  return (
+    <Link className={cls} href={domain.href} aria-label={domain.label}>
       {inner}
-    </a>
-  ) : (
-    <div className={cls}>{inner}</div>
+    </Link>
   );
 }
 
-// Desktop: absolutely-positioned cards floating around the hero on the orbit.
+// Desktop: the four buttons pinned to the corners around the identity.
 export function OrbitLayer({ domains }) {
   return (
-    <>
-      <Ellipse />
-      <div className="orbit__cards" aria-hidden="true">
-        {domains.map((d) => (
-          <Card key={d.key} domain={d} />
-        ))}
-      </div>
-    </>
+    <nav className="portals" aria-label="Sections">
+      {domains.map((d) => (
+        <DomainPortal key={d.key} domain={d} layout="corner" />
+      ))}
+    </nav>
   );
 }
 
-// Narrow screens: the same cards as a static 2x2 grid under the tagline.
+// Narrow screens: the same buttons stacked under the centre identity.
 export function DomainGrid({ domains }) {
   return (
     <div className="hero__grid">
       {domains.map((d) => (
-        <Card key={d.key} domain={d} className="orbit__card--static" />
+        <DomainPortal key={d.key} domain={d} layout="static" />
       ))}
     </div>
   );

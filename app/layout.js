@@ -1,14 +1,13 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Karim Barake — Music · Research · Bio · Vision Care",
+  title: "Karim W. Barake — On a mission to build a world that sees better",
   description:
-    "Personal site of Karim Barake. Building bridges between sound, science, storytelling, and sight.",
+    "Personal site of Karim W. Barake. On a mission to build a world that sees better.",
   metadataBase: new URL("https://karimbarake.com"),
   openGraph: {
-    title: "Karim Barake",
-    description:
-      "Building bridges between sound, science, storytelling, and sight.",
+    title: "Karim W. Barake",
+    description: "On a mission to build a world that sees better.",
     type: "website",
   },
 };
