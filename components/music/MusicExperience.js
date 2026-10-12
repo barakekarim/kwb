@@ -2,14 +2,16 @@ import KwParentNav from "../KwParentNav";
 import MusicHero from "./MusicHero";
 import NextShow from "./NextShow";
 import TourDates from "./TourDates";
-import TourPoster from "./TourPoster";
-import { musicData, tourDates } from "../../data/music";
+import PlayedShows from "./PlayedShows";
+import { musicData, splitTourDates } from "../../data/music";
 
 /**
  * The /music page (BARAKE). A true standalone route.
- * Sections, in order: intro, next show, tour dates, tour poster. End.
+ * Sections, in order: intro, next show, tour dates, played stubs. End.
  */
 export default function MusicExperience() {
+  const { upcoming, played } = splitTourDates();
+
   return (
     <div className="music">
       <div className="music__grain" aria-hidden="true" />
@@ -19,9 +21,9 @@ export default function MusicExperience() {
 
       <div className="music__wrap">
         <MusicHero data={musicData} />
-        <NextShow show={musicData.nextShow} />
-        <TourDates dates={tourDates} />
-        <TourPoster poster={musicData.poster} />
+        {upcoming.length > 0 && <NextShow show={upcoming[0]} />}
+        {upcoming.length > 0 && <TourDates dates={upcoming} />}
+        {played.length > 0 && <PlayedShows shows={played} />}
 
         <p className="music__end" aria-hidden="true">
           BARAKE · 2026

@@ -3,9 +3,11 @@
  *
  * To update the site you only touch this file:
  *   • instagramUrl      — the hero Instagram CTA
- *   • nextShow          — the featured "Next show" block
- *   • poster            — the Fall 2026 tour flyer image (drop it at public/music/)
  *   • tourDates[]       — one object per row; see the shape below
+ *
+ * Nothing else to maintain: the "Next show" block is the first upcoming date,
+ * and once a date has passed it moves on its own from the tour list to the
+ * "Played" stubs (the page re-checks the date every hour).
  *
  * Tour row shape:
  *   {
@@ -25,21 +27,6 @@ export const musicData = {
   instagramUrl: "https://www.instagram.com/barake.music",
 
   bio: "BARAKE is an artist who has performed across New York City, Boston, Washington D.C., and London, playing for crowds of up to 4,000 and sharing stages with artists including Meduza, Francis Mercier, &Friends, Notre Dame, and Luch. A resident at 5ESS1ONS and curator of his own BARAKE 1NVITE5 events, he brings people together through high-energy disco and melodic sounds — creating memorable experiences wherever he goes.",
-
-  nextShow: {
-    date: "SEP 19",
-    fullDate: "September 19, 2026",
-    venue: "51",
-    city: "Boston, USA",
-    ticketUrl: "https://posh.vip/e/5ess1ons-x-monobase-sep-19?t=linktree",
-    status: "tickets",
-  },
-
-  poster: {
-    // Drop the real flyer here; until then a styled placeholder shows.
-    src: "/music/fall-2026-poster.jpg",
-    alt: "BARAKE — Fall 2026 tour poster with the full list of tour dates",
-  },
 };
 
 export const tourDates = [
@@ -101,3 +88,20 @@ export const tourDates = [
     status: "soon",
   },
 ];
+
+// A show counts as played once its night is over: 6am New York time the next
+// day (11:00 UTC is 6am EST / 7am EDT), so a late set never flips to "played"
+// before it ends.
+function playedAfter(fullDate) {
+  const d = new Date(`${fullDate} UTC`);
+  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1, 11);
+}
+
+export function splitTourDates(now = Date.now()) {
+  const upcoming = [];
+  const played = [];
+  for (const show of tourDates) {
+    (now >= playedAfter(show.fullDate) ? played : upcoming).push(show);
+  }
+  return { upcoming, played: played.reverse() };
+}
