@@ -63,8 +63,8 @@ export const tourDates = [
     ticketUrl:
       "https://dice.fm/partner/tickets/event/dkd2yo-mtrnm-x-sessions-present-colombus-weekend-arcade-dc-9th-oct-the-arcade-washington-tickets?dice_id=10201862&dice_channel=sms&dice_campaign=sessionswhatsapp&dice_feature=mio_marketing",
     status: "tickets",
-    title: "COLUMBUS WEEKEND — THE ARCADE",
-    role: "Co-headline with OSCAAR",
+    title: "The Arcade with OSCAAR",
+    role: "Co-headline",
     promoter: "MTRNM × 5ESS1ONS",
     star: true,
   },
