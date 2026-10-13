@@ -146,7 +146,7 @@ export const pastShows = [
   { when: "2025-05-06", title: "SAMSON", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2025-05-17", title: "REWA", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2025-05-24", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
-  { when: "2025-06-07", label: "100TH", title: "100th Session with ROME MEHDI", role: "Opening", promoter: "MTRNM × 5ESS1ONS", venue: "Arlo Williamsburg", city: "New York City", star: true },
+  { when: "2025-06-12", title: "100th Session with ROME MEHDI", role: "Warm-up", promoter: "MTRNM × 5ESS1ONS", venue: "Arlo Williamsburg", city: "New York City", star: true },
   { when: "2025-09-04", title: "RALØ", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2025-09-12", title: "MEDUZA", role: "Direct support", promoter: "Extra Credit Productions", venue: "Providence Ice Rink", city: "Providence, RI", star: true },
   { when: "2025-09-20", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
