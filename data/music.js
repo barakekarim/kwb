@@ -39,7 +39,7 @@ export const tourDates = [
     city: "Boston, USA",
     ticketUrl: "https://posh.vip/e/5ess1ons-boat-party-sep-5?t=whatsapp",
     status: "tickets",
-    title: "MEHDI — Boat Party",
+    title: "BOAT PARTY — MEHDI",
     role: "Co-headline",
     promoter: "5ESS1ONS",
     star: true,
@@ -63,8 +63,8 @@ export const tourDates = [
     ticketUrl:
       "https://dice.fm/partner/tickets/event/dkd2yo-mtrnm-x-sessions-present-colombus-weekend-arcade-dc-9th-oct-the-arcade-washington-tickets?dice_id=10201862&dice_channel=sms&dice_campaign=sessionswhatsapp&dice_feature=mio_marketing",
     status: "tickets",
-    title: "OSCAAR — Columbus Weekend",
-    role: "B2B co-headline",
+    title: "COLUMBUS WEEKEND — THE ARCADE",
+    role: "Co-headline with OSCAAR",
     promoter: "MTRNM × 5ESS1ONS",
     star: true,
   },
@@ -156,12 +156,12 @@ export const pastShows = [
   { when: "2025-11-29", title: "LUCH & ORSAY — with OSCAAR", role: "Closing B2B", promoter: "MTRNM × 5ESS1ONS", venue: "Theata", city: "London", star: true },
 
   // ---- 2026 ----
-  { when: "2026-01-22", title: "OSCAAR", role: "B2B co-headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2026-01-22", title: "5ESS1ONS", role: "B2B with OSCAAR", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2026-02-08", title: "5ESS1ONS Residency — 2-Year Anniversary", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
   { when: "2026-02-19", title: "SON OF SON", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2026-03-23", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
-  { when: "2026-04-19", title: "Marathon Weekend Boat Party", role: "Co-headline", promoter: "MTRNM × 5ESS1ONS", venue: "60 Rowes Wharf", city: "Boston", star: true },
-  { when: "2026-04-19", title: "OSCAAR — Marathon Weekend", role: "B2B headline", promoter: "MTRNM × 5ESS1ONS", venue: "Bijou", city: "Boston", star: true },
+  { when: "2026-04-19", title: "Marathon Weekend Boat Party", role: "Co-headline with OSCAAR", promoter: "MTRNM × 5ESS1ONS", venue: "60 Rowes Wharf", city: "Boston", star: true },
+  { when: "2026-04-19", title: "MARATHON WEEKEND", role: "B2B headline with OSCAAR", promoter: "MTRNM × 5ESS1ONS", venue: "Bijou", city: "Boston", star: true },
   { when: "2026-05-16", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
 ];
 
