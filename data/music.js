@@ -17,6 +17,8 @@
  *     city:     "Boston, USA",
  *     ticketUrl: "https://...",          // paste the link to activate the button
  *     status:   "tickets" | "soon",      // "soon" renders a non-clickable "Details soon"
+ *     // for the "Played" stub once the date has passed (see pastShows):
+ *     title, role, promoter, star
  *   }
  *
  * A row with status "tickets" but an empty ticketUrl shows "TICKETS ↗" in a
@@ -33,10 +35,14 @@ export const tourDates = [
   {
     date: "SEP 5",
     fullDate: "September 5, 2026",
-    venue: "Boat Party",
+    venue: "60 Rowes Wharf",
     city: "Boston, USA",
     ticketUrl: "https://posh.vip/e/5ess1ons-boat-party-sep-5?t=whatsapp",
     status: "tickets",
+    title: "MEHDI — Boat Party",
+    role: "Co-headline",
+    promoter: "5ESS1ONS",
+    star: true,
   },
   {
     date: "SEP 19",
@@ -45,6 +51,9 @@ export const tourDates = [
     city: "Boston, USA",
     ticketUrl: "https://posh.vip/e/5ess1ons-x-monobase-sep-19?t=linktree",
     status: "tickets",
+    title: "MONOBASE",
+    role: "Direct support",
+    promoter: "5ESS1ONS",
   },
   {
     date: "OCT 9",
@@ -54,6 +63,10 @@ export const tourDates = [
     ticketUrl:
       "https://dice.fm/partner/tickets/event/dkd2yo-mtrnm-x-sessions-present-colombus-weekend-arcade-dc-9th-oct-the-arcade-washington-tickets?dice_id=10201862&dice_channel=sms&dice_campaign=sessionswhatsapp&dice_feature=mio_marketing",
     status: "tickets",
+    title: "OSCAAR — Columbus Weekend",
+    role: "B2B co-headline",
+    promoter: "MTRNM × 5ESS1ONS",
+    star: true,
   },
   {
     date: "OCT 10",
@@ -62,6 +75,10 @@ export const tourDates = [
     city: "Washington DC, USA",
     ticketUrl: "https://link.dice.fm/V2a8f7975630",
     status: "tickets",
+    title: "&FRIENDS / OSCAAR",
+    role: "Warm-up",
+    promoter: "MTRNM × 5ESS1ONS × Nu Androids",
+    star: true,
   },
   {
     date: "OCT 29",
@@ -94,53 +111,58 @@ export const tourDates = [
  * the page sorts newest first and groups by year.
  *
  *   {
- *     when:  "2024-04-25",          // or "2025-09" if you only know the month
- *     label: "100TH",               // optional: replaces the date on the stub
- *     venue: "51",
- *     city:  "Boston",
- *     role:  "Direct support",      // Headline · Direct support · Opening · Closing
- *     with:  "Francis Mercier",     // optional: who you played with
- *     note:  "B2B Oscar",           // optional: small extra line
- *     star:  true,                  // optional: gold stub for the big nights
+ *     when:     "2024-04-25",          // or "2025-09" if you only know the month
+ *     label:    "100TH",               // optional: replaces the date on the stub
+ *     title:    "FRANCIS MERCIER",     // artist or event (artists in uppercase)
+ *     role:     "Direct support",
+ *     promoter: "5ESS1ONS",
+ *     venue:    "51",
+ *     city:     "Boston",
+ *     star:     true,                  // optional: gold stub for the big nights
  *   }
  *
- * Dates passed on tourDates above join this list on their own.
+ * Tour dates above join this list on their own once they've passed — give
+ * them the same title / role / promoter / star fields.
  */
 export const pastShows = [
   // ---- 2024 ----
-  { when: "2024-02-03", venue: "51", city: "Boston", role: "Opening", with: "Epsylon" },
-  { when: "2024-02-12", venue: "Bijou", city: "Boston", role: "Opening", with: "Ashton Collier" },
-  { when: "2024-03-28", venue: "51", city: "Boston", role: "Headline" },
-  { when: "2024-04-25", venue: "51", city: "Boston", role: "Direct support", with: "Francis Mercier", star: true },
-  { when: "2024-05-14", venue: "51", city: "Boston", role: "Direct support" },
-  { when: "2024-05-31", venue: "Bijou", city: "Boston", role: "Direct support", with: "Notre Dame", star: true },
-  { when: "2024-08-27", venue: "51", city: "Boston", role: "Direct support" },
-  { when: "2024-09-17", venue: "51", city: "Boston", role: "Direct support", with: "Vision" },
-  { when: "2024-09-26", venue: "51", city: "Boston", role: "Direct support", with: "&Friends" },
-  { when: "2024-10-19", venue: "51", city: "Boston", role: "Direct support", with: "Victor Alk" },
-  { when: "2024-10-26", venue: "Gospel", city: "New York City", star: true },
+  { when: "2024-02-02", title: "EPSYLON", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-02-12", title: "ASHTON COLLIER", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-03-28", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-04-25", title: "FRANCIS MERCIER", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
+  { when: "2024-05-14", title: "REWA", role: "Opening", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-05-31", title: "NOTRE DAME", role: "Direct support", promoter: "Bijou", venue: "Bijou", city: "Boston", star: true },
+  { when: "2024-08-31", title: "FELLA", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-09-21", title: "VXSION", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-09-26", title: "&FRIENDS", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
+  { when: "2024-10-19", title: "VICTOR ALC", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2024-10-26", title: "GOSPEL NYC", role: "Performance", promoter: "5ESS1ONS × Gospel", venue: "Gospel", city: "New York City", star: true },
 
   // ---- 2025 ----
-  { when: "2025-01-14", venue: "51", city: "Boston", role: "Direct support", with: "Mehdi" },
-  { when: "2025-02-08", venue: "51", city: "Boston", role: "Direct support", with: "Samsung" },
-  { when: "2025-03-06", venue: "51", city: "Boston", role: "Direct support", with: "Cairo" },
-  { when: "2025-04-19", venue: "51", city: "Boston", role: "Direct support", with: "Tehran" },
-  { when: "2025", label: "100TH", venue: "Arlo Williamsburg", city: "New York City", note: "MTRNM x 5ESS1ONS — the 100th session", star: true },
-  { when: "2025-05-17", venue: "51", city: "Boston", role: "Direct support", with: "Treo" },
-  { when: "2025-05-24", venue: "51", city: "Boston", role: "Headline" },
-  { when: "2025-08-25", venue: "51", city: "Boston", role: "Direct support", with: "ALO" },
-  { when: "2025-09-12", venue: "Providence Ice Rink", city: "Providence, RI", role: "Direct support", with: "Meduza", star: true },
-  { when: "2025-09", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS" },
-  { when: "2025-10-04", venue: "51", city: "Boston", role: "Direct support", with: "Mehdi" },
-  { when: "2025-10-10", venue: "The Arcade", city: "Washington DC", note: "Columbus Weekend" },
-  { when: "2025-10-11", venue: "ALO Rooftop", city: "Washington DC", note: "Columbus Weekend" },
-  { when: "2025-11-29", venue: "Orasi Theatre", city: "London", role: "Closing", with: "Luch", star: true },
+  { when: "2025-01-18", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-02-08", title: "MEHDI", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-03-06", title: "CAIIRO", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
+  { when: "2025-04-19", title: "RAYYAN", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-05-06", title: "SAMSON", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-05-17", title: "REWA", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-05-24", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-06-07", label: "100TH", title: "100th Session — ROME MEHDI", role: "Opening", promoter: "MTRNM × 5ESS1ONS", venue: "Arlo Williamsburg", city: "New York City", star: true },
+  { when: "2025-09-04", title: "RALØ", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-09-12", title: "MEDUZA", role: "Direct support", promoter: "Extra Credit Productions", venue: "Providence Ice Rink", city: "Providence, RI", star: true },
+  { when: "2025-09-20", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-10-04", title: "MEHDI", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2025-10-10", title: "The Arcade with OSCAAR", role: "Direct support", promoter: "MTRNM × 5ESS1ONS", venue: "The Arcade", city: "Washington DC", star: true },
+  { when: "2025-10-11", title: "Columbus Weekend II", role: "Performance", promoter: "MTRNM × 5ESS1ONS", venue: "Arlo Rooftop", city: "Washington DC", star: true },
+  { when: "2025-11-29", title: "LUCH & ORSAY — with OSCAAR", role: "Closing B2B", promoter: "MTRNM × 5ESS1ONS", venue: "Theata", city: "London", star: true },
 
   // ---- 2026 ----
-  { when: "2026-01-13", venue: "51", city: "Boston", role: "Direct support", with: "Son of Son" },
-  { when: "2026-01-22", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS · B2B Oscar" },
-  { when: "2026-02-03", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS" },
-  { when: "2026-03-23", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS" },
+  { when: "2026-01-22", title: "OSCAAR", role: "B2B co-headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2026-02-08", title: "5ESS1ONS Residency — 2-Year Anniversary", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
+  { when: "2026-02-19", title: "SON OF SON", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2026-03-23", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
+  { when: "2026-04-19", title: "Marathon Weekend Boat Party", role: "Co-headline", promoter: "MTRNM × 5ESS1ONS", venue: "60 Rowes Wharf", city: "Boston", star: true },
+  { when: "2026-04-19", title: "OSCAAR — Marathon Weekend", role: "B2B headline", promoter: "MTRNM × 5ESS1ONS", venue: "Bijou", city: "Boston", star: true },
+  { when: "2026-05-16", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
 ];
 
 // A show counts as played once its night is over: 6am New York time the next
@@ -177,7 +199,8 @@ export function playedByYear(now = Date.now()) {
   const fromTour = splitTourDates(now).played.map((show) => {
     const d = new Date(`${show.fullDate} UTC`);
     const when = d.toISOString().slice(0, 10);
-    return { when, venue: show.venue, city: show.city.replace(/, USA$/, "") };
+    const { date, fullDate, ticketUrl, status, ...rest } = show;
+    return { ...rest, when, city: show.city.replace(/, USA$/, "") };
   });
 
   const all = [...pastShows, ...fromTour]

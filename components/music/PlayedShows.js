@@ -6,10 +6,8 @@ const TILTS = [-2.2, 1.6, -1.2, 2.4, -1.8, 1.1];
 
 function Stub({ show, index }) {
   const variant = show.star ? "gold" : VARIANTS[index % VARIANTS.length];
-  const billing = [show.role, show.with && `w/ ${show.with}`]
-    .filter(Boolean)
-    .join(" ");
-  const hasDay = /^\d{4}-\d{2}/.test(show.when);
+  const hasDay = /^\d{4}-\d{2}-\d{2}$/.test(show.when);
+  const title = show.title ?? show.venue;
 
   return (
     <li
@@ -17,10 +15,12 @@ function Stub({ show, index }) {
       style={{ "--tilt": `${TILTS[index % TILTS.length]}deg` }}
     >
       <span className="stub__date">{show.label}</span>
-      <span className="stub__venue">{show.venue}</span>
-      <span className="stub__city">{show.city}</span>
-      {billing && <span className="stub__bill">{billing}</span>}
-      {show.note && <span className="stub__note">{show.note}</span>}
+      <span className="stub__title">{title}</span>
+      {show.role && <span className="stub__role">{show.role}</span>}
+      <span className="stub__where">
+        {show.title ? `${show.venue} · ${show.city}` : show.city}
+      </span>
+      {show.promoter && <span className="stub__promoter">{show.promoter}</span>}
       {hasDay && <time className="u-sr-only" dateTime={show.when} />}
       <span className="stub__stamp" aria-hidden="true">
         Played

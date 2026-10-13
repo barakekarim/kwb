@@ -1634,32 +1634,40 @@ a.m-cta:focus-visible {
   background: linear-gradient(150deg, #fbe7b4, #f0cf7a 60%, #e6bb5c);
   filter: none;
 }
-.stub__bill,
-.stub__note {
-  font-size: 0.78rem;
-  line-height: 1.3;
-  color: #3a3d2c;
-}
-.stub__bill {
-  margin-top: 6px;
-  font-weight: 700;
-}
+
 .stub__date {
   font-weight: 900;
   font-size: clamp(1.6rem, 4vw, 2.1rem);
   line-height: 1;
   letter-spacing: -0.02em;
 }
-.stub__venue {
+.stub__title {
   margin-top: 8px;
   font-weight: 800;
   font-size: 0.95rem;
+  line-height: 1.15;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
-.stub__city {
-  font-size: 0.82rem;
+.stub__role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3a3d2c;
+}
+.stub__where {
+  margin-top: 4px;
+  font-size: 0.8rem;
   color: #55584a;
+}
+.stub__promoter {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a7d68;
+}
+.stub--gold .stub__promoter {
+  color: #8a6a24;
 }
 .stub__stamp {
   position: absolute;
