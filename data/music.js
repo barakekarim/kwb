@@ -136,7 +136,7 @@ export const pastShows = [
   { when: "2024-09-21", title: "VXSION", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2024-09-26", title: "&FRIENDS", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
   { when: "2024-10-19", title: "VICTOR ALC", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
-  { when: "2024-10-26", title: "GOSPEL NYC", role: "Performance", promoter: "5ESS1ONS × Gospel", venue: "Gospel", city: "New York City", star: true },
+  { when: "2024-10-26", title: "Halloween at Gospel with LUCH", role: "Direct support", promoter: "5ESS1ONS × Gospel", venue: "Gospel", city: "New York City", star: true },
 
   // ---- 2025 ----
   { when: "2025-01-18", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
