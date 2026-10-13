@@ -1385,71 +1385,6 @@ a.m-cta:focus-visible {
   opacity: 0.7;
 }
 
-/* ---------- Section 2 — Next show ---------- */
-.nextshow {
-  padding: clamp(30px, 6vw, 60px) 0;
-}
-.nextshow__card {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: clamp(16px, 4vw, 40px);
-  padding: clamp(22px, 4vw, 40px) clamp(20px, 4vw, 46px);
-  color: var(--warm);
-  background: linear-gradient(100deg, #356df3, #2b53c6);
-  transform: rotate(-0.6deg);
-  clip-path: polygon(0 3%, 99.4% 0, 100% 97%, 0.5% 100%);
-  box-shadow: -8px 12px 34px rgba(0, 0, 0, 0.45);
-}
-.nextshow__wave {
-  position: absolute;
-  top: 10px;
-  left: 16px;
-  width: 84px;
-  height: 26px;
-  color: var(--m-acid);
-  opacity: 0.85;
-}
-.nextshow__date {
-  position: relative;
-  font-weight: 900;
-  font-size: clamp(2.2rem, 8vw, 4.6rem);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-}
-.nextshow__venue {
-  font-weight: 800;
-  font-size: clamp(1.1rem, 3vw, 1.7rem);
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-}
-.nextshow__city {
-  color: rgba(242, 240, 231, 0.82);
-  font-size: 0.98rem;
-}
-.nextshow__full {
-  margin-top: 4px;
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(242, 240, 231, 0.6);
-}
-.nextshow__act {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nextshow__arrow {
-  width: 46px;
-  height: 22px;
-  color: var(--m-yellow);
-  flex-shrink: 0;
-}
-.nextshow__act .m-cta {
-  color: var(--warm);
-}
-
 /* ---------- Section 3 — Fall 2026 tour dates ---------- */
 .tour {
   padding: clamp(60px, 10vw, 120px) 0 clamp(40px, 7vw, 80px);
@@ -1627,9 +1562,6 @@ a.stub__cta:focus-visible {
   .mhero {
     padding: clamp(26px, 8vw, 56px) 0 clamp(34px, 8vw, 60px);
   }
-  .nextshow {
-    padding: clamp(22px, 7vw, 44px) 0;
-  }
   .tour {
     padding: clamp(40px, 10vw, 72px) 0 clamp(26px, 7vw, 48px);
   }
@@ -1637,26 +1569,6 @@ a.stub__cta:focus-visible {
     padding: clamp(36px, 10vw, 72px) 0 clamp(26px, 7vw, 48px);
   }
 
-  /* Next show: stacked, flat, full-width tap target */
-  .nextshow__card {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    text-align: left;
-    transform: none;
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
-  }
-  .nextshow__act {
-    margin-top: 6px;
-    width: 100%;
-  }
-  .nextshow__arrow {
-    display: none;
-  }
-  .nextshow__act .m-cta {
-    flex: 1;
-    justify-content: center;
-    padding-block: 15px;
-  }
 }
 
 @media (max-width: 620px) {
@@ -1696,13 +1608,6 @@ a.stub__cta:focus-visible {
     transform: rotate(1.4deg);
   }
 
-  .nextshow__wave {
-    display: none;
-  }
-  .nextshow__card {
-    padding: 22px 20px;
-    clip-path: none;
-  }
 
 
   /* Played: latest year only until "Earlier years" is tapped */
@@ -1761,12 +1666,6 @@ a.stub__cta:focus-visible {
     font-size: clamp(2.2rem, 17vw, 3.3rem);
     text-shadow: 2px 2px 0 rgba(53, 109, 243, 0.92),
       4px 4px 0 rgba(184, 229, 31, 0.3);
-  }
-  .nextshow__date {
-    font-size: 2rem;
-  }
-  .nextshow__card {
-    padding: 18px 16px;
   }
 }
 

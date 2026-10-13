@@ -5,9 +5,8 @@
  *   • instagramUrl      — the hero Instagram CTA
  *   • tourDates[]       — one object per row; see the shape below
  *
- * Nothing else to maintain: the "Next show" block is the first upcoming date,
- * and once a date has passed it moves on its own from the tour list to the
- * "Played" stubs (the page re-checks the date every hour).
+ * Nothing else to maintain: once a date has passed it moves on its own from
+ * the tour list to the "Played" stubs (the page re-checks every hour).
  *
  * Tour row shape:
  *   {
