@@ -160,8 +160,8 @@ export const pastShows = [
   { when: "2026-02-08", title: "5ESS1ONS Residency — 2-Year Anniversary", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston", star: true },
   { when: "2026-02-19", title: "SON OF SON", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2026-03-23", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
-  { when: "2026-04-19", title: "Marathon Weekend Boat Party", role: "Co-headline with OSCAAR", promoter: "MTRNM × 5ESS1ONS", venue: "60 Rowes Wharf", city: "Boston", star: true },
-  { when: "2026-04-19", title: "MARATHON WEEKEND", role: "B2B headline with OSCAAR", promoter: "MTRNM × 5ESS1ONS", venue: "Bijou", city: "Boston", star: true },
+  { when: "2026-04-19", title: "Boat Party with OSCAAR", role: "Co-headline", promoter: "MTRNM × 5ESS1ONS", venue: "60 Rowes Wharf", city: "Boston", star: true },
+  { when: "2026-04-19", title: "Marathon Weekend Afterparty with OSCAAR", role: "B2B headline", promoter: "MTRNM × 5ESS1ONS", venue: "Bijou", city: "Boston", star: true },
   { when: "2026-05-16", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
 ];
 
