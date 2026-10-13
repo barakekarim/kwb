@@ -152,7 +152,7 @@ export const pastShows = [
   { when: "2025-09-20", title: "5ESS1ONS", role: "Headline", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2025-10-04", title: "MEHDI", role: "Direct support", promoter: "5ESS1ONS", venue: "51", city: "Boston" },
   { when: "2025-10-10", title: "The Arcade with OSCAAR", role: "Direct support", promoter: "MTRNM × 5ESS1ONS", venue: "The Arcade", city: "Washington DC", star: true },
-  { when: "2025-10-11", title: "Columbus Weekend II", role: "Performance", promoter: "MTRNM × 5ESS1ONS", venue: "Arlo Rooftop", city: "Washington DC", star: true },
+  { when: "2025-10-11", title: "Columbus Weekend Rooftop Party", role: "Performance", promoter: "MTRNM × 5ESS1ONS", venue: "Arlo Rooftop", city: "Washington DC", star: true },
   { when: "2025-11-29", title: "LUCH & ORSAY with OSCAAR", role: "Closing B2B", promoter: "MTRNM × 5ESS1ONS", venue: "Theata", city: "London", star: true },
 
   // ---- 2026 ----
