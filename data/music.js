@@ -89,6 +89,60 @@ export const tourDates = [
   },
 ];
 
+/**
+ * Every show already played, before the dates above. Order doesn't matter —
+ * the page sorts newest first and groups by year.
+ *
+ *   {
+ *     when:  "2024-04-25",          // or "2025-09" if you only know the month
+ *     label: "100TH",               // optional: replaces the date on the stub
+ *     venue: "51",
+ *     city:  "Boston",
+ *     role:  "Direct support",      // Headline · Direct support · Opening · Closing
+ *     with:  "Francis Mercier",     // optional: who you played with
+ *     note:  "B2B Oscar",           // optional: small extra line
+ *     star:  true,                  // optional: gold stub for the big nights
+ *   }
+ *
+ * Dates passed on tourDates above join this list on their own.
+ */
+export const pastShows = [
+  // ---- 2024 ----
+  { when: "2024-02-03", venue: "51", city: "Boston", role: "Opening", with: "Epsylon" },
+  { when: "2024-02-12", venue: "Bijou", city: "Boston", role: "Opening", with: "Ashton Collier" },
+  { when: "2024-03-28", venue: "51", city: "Boston", role: "Headline" },
+  { when: "2024-04-25", venue: "51", city: "Boston", role: "Direct support", with: "Francis Mercier", star: true },
+  { when: "2024-05-14", venue: "51", city: "Boston", role: "Direct support" },
+  { when: "2024-05-31", venue: "Bijou", city: "Boston", role: "Direct support", with: "Notre Dame", star: true },
+  { when: "2024-08-27", venue: "51", city: "Boston", role: "Direct support" },
+  { when: "2024-09-17", venue: "51", city: "Boston", role: "Direct support", with: "Vision" },
+  { when: "2024-09-26", venue: "51", city: "Boston", role: "Direct support", with: "&Friends" },
+  { when: "2024-10-19", venue: "51", city: "Boston", role: "Direct support", with: "Victor Alk" },
+  { when: "2024-10-26", venue: "Gospel", city: "New York City", star: true },
+
+  // ---- 2025 ----
+  { when: "2025-01-14", venue: "51", city: "Boston", role: "Direct support", with: "Mehdi" },
+  { when: "2025-02-08", venue: "51", city: "Boston", role: "Direct support", with: "Samsung" },
+  { when: "2025-03-06", venue: "51", city: "Boston", role: "Direct support", with: "Cairo" },
+  { when: "2025-04-19", venue: "51", city: "Boston", role: "Direct support", with: "Tehran" },
+  { when: "2025", label: "100TH", venue: "Arlo Williamsburg", city: "New York City", note: "MTRNM x 5ESS1ONS — the 100th session", star: true },
+  { when: "2025-05-17", venue: "51", city: "Boston", role: "Direct support", with: "Treo" },
+  { when: "2025-05-24", venue: "51", city: "Boston", role: "Headline" },
+  { when: "2025-08-25", venue: "51", city: "Boston", role: "Direct support", with: "ALO" },
+  { when: "2025-09-12", venue: "Providence Ice Rink", city: "Providence, RI", role: "Direct support", with: "Meduza", star: true },
+  { when: "2025-09", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS" },
+  { when: "2025-10-04", venue: "51", city: "Boston", role: "Direct support", with: "Mehdi" },
+  { when: "2025-10-10", venue: "The Arcade", city: "Washington DC", note: "Columbus Weekend" },
+  { when: "2025-10-11", venue: "ALO Rooftop", city: "Washington DC", note: "Columbus Weekend" },
+  { when: "2025-11-29", venue: "Orasi Theatre", city: "London", role: "Closing", with: "Luch", star: true },
+
+  // ---- 2026 ----
+  { when: "2026-01-13", venue: "51", city: "Boston", role: "Direct support", with: "Son of Son" },
+  { when: "2026-01-22", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS · B2B Oscar" },
+  { when: "2026-02-03", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS" },
+  { when: "2026-03-23", venue: "51", city: "Boston", role: "Headline", note: "5ESS1ONS" },
+];
+
 // A show counts as played once its night is over: 6am New York time the next
 // day (11:00 UTC is 6am EST / 7am EDT), so a late set never flips to "played"
 // before it ends.
@@ -103,5 +157,38 @@ export function splitTourDates(now = Date.now()) {
   for (const show of tourDates) {
     (now >= playedAfter(show.fullDate) ? played : upcoming).push(show);
   }
-  return { upcoming, played: played.reverse() };
+  return { upcoming, played };
+}
+
+const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+/** "2024-04-25" → "APR 25", "2025-09" → "SEP", "2025" → "2025" */
+function stubLabel(when) {
+  const [, m, d] = when.split("-");
+  if (!m) return when;
+  return d ? `${MONTHS[m - 1]} ${Number(d)}` : MONTHS[m - 1];
+}
+
+/**
+ * Every played show — the archive plus tour dates that have passed — newest
+ * first, grouped by year: [{ year, shows }].
+ */
+export function playedByYear(now = Date.now()) {
+  const fromTour = splitTourDates(now).played.map((show) => {
+    const d = new Date(`${show.fullDate} UTC`);
+    const when = d.toISOString().slice(0, 10);
+    return { when, venue: show.venue, city: show.city.replace(/, USA$/, "") };
+  });
+
+  const all = [...pastShows, ...fromTour]
+    .map((show) => ({ ...show, label: show.label ?? stubLabel(show.when) }))
+    .sort((a, b) => b.when.localeCompare(a.when));
+
+  const years = [];
+  for (const show of all) {
+    const year = show.when.slice(0, 4);
+    if (years.at(-1)?.year !== year) years.push({ year, shows: [] });
+    years.at(-1).shows.push(show);
+  }
+  return years;
 }

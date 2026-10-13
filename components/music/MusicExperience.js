@@ -3,14 +3,15 @@ import MusicHero from "./MusicHero";
 import NextShow from "./NextShow";
 import TourDates from "./TourDates";
 import PlayedShows from "./PlayedShows";
-import { musicData, splitTourDates } from "../../data/music";
+import { musicData, splitTourDates, playedByYear } from "../../data/music";
 
 /**
  * The /music page (BARAKE). A true standalone route.
  * Sections, in order: intro, next show, tour dates, played stubs. End.
  */
 export default function MusicExperience() {
-  const { upcoming, played } = splitTourDates();
+  const { upcoming } = splitTourDates();
+  const played = playedByYear();
 
   return (
     <div className="music">
@@ -23,7 +24,7 @@ export default function MusicExperience() {
         <MusicHero data={musicData} />
         {upcoming.length > 0 && <NextShow show={upcoming[0]} />}
         {upcoming.length > 0 && <TourDates dates={upcoming} />}
-        {played.length > 0 && <PlayedShows shows={played} />}
+        {played.length > 0 && <PlayedShows years={played} />}
 
         <p className="music__end" aria-hidden="true">
           BARAKE · 2026
