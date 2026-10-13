@@ -39,7 +39,7 @@ export const tourDates = [
     city: "Boston, USA",
     ticketUrl: "https://posh.vip/e/5ess1ons-boat-party-sep-5?t=whatsapp",
     status: "tickets",
-    title: "BOAT PARTY — MEHDI",
+    title: "Boat Party with MEHDI",
     role: "Co-headline",
     promoter: "5ESS1ONS",
     star: true,
