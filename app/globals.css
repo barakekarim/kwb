@@ -1454,106 +1454,6 @@ a.m-cta:focus-visible {
 .tour {
   padding: clamp(60px, 10vw, 120px) 0 clamp(40px, 7vw, 80px);
 }
-.tour__list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 2vw, 20px);
-}
-.trow {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(72px, auto) 1fr auto;
-  align-items: center;
-  gap: clamp(14px, 3vw, 30px);
-  padding: clamp(14px, 2.4vw, 22px) clamp(18px, 3vw, 30px);
-  background: #0f110b;
-  border: 1px solid rgba(242, 240, 231, 0.08);
-  color: var(--warm);
-  transform: rotate(var(--tilt, 0deg));
-  clip-path: polygon(0 6%, 99.5% 0, 100% 94%, 0.4% 100%);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.trow > * {
-  position: relative;
-  z-index: 1;
-}
-.trow::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: clamp(88px, 24%, 200px);
-  background: var(--c);
-  z-index: 0;
-}
-.trow--cobalt {
-  --c: #356df3;
-  --c-ink: #f2f0e7;
-}
-.trow--acid {
-  --c: #b8e51f;
-  --c-ink: #0b0d08;
-}
-.trow--lavender {
-  --c: #a991e8;
-  --c-ink: #10120b;
-}
-.trow--dark {
-  --c: #23261a;
-  --c-ink: #f2f0e7;
-}
-.trow__date {
-  font-weight: 900;
-  font-size: clamp(1rem, 2.6vw, 1.55rem);
-  letter-spacing: 0.01em;
-  color: var(--c-ink);
-}
-.trow__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.trow__venue {
-  font-weight: 800;
-  font-size: clamp(0.98rem, 2vw, 1.2rem);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-.trow__city {
-  font-size: 0.9rem;
-  color: rgba(242, 240, 231, 0.62);
-}
-.trow__cta {
-  color: var(--warm);
-}
-.trow__soon {
-  font: 700 0.72rem/1 var(--font);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(242, 240, 231, 0.4);
-  white-space: nowrap;
-}
-.trow__star {
-  position: absolute;
-  right: 10px;
-  top: 8px;
-  width: 22px;
-  height: 22px;
-  color: var(--m-yellow);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 2;
-}
-.trow:has(a.trow__cta):hover {
-  transform: rotate(calc(var(--tilt, 0deg) * 0.3)) translateX(5px);
-  box-shadow: -8px 10px 26px rgba(0, 0, 0, 0.4);
-}
-.trow:has(a.trow__cta):hover .trow__star {
-  opacity: 1;
-}
-.trow:has(a.trow__cta):hover .trow__cta {
-  border-color: var(--m-yellow);
-}
 
 /* ---------- Section 4 — Played: torn, stamped ticket stubs ---------- */
 .played {
@@ -1692,6 +1592,25 @@ a.m-cta:focus-visible {
   height: 26px;
   color: #c2410c;
 }
+.stub--upcoming {
+  filter: none;
+}
+.stub__cta {
+  position: absolute;
+  right: 14px;
+  bottom: 16px;
+  padding: 8px 11px;
+  font-size: 0.68rem;
+  color: #12140d;
+}
+a.stub__cta:hover {
+  border-color: #12140d;
+  background: #12140d;
+  color: var(--m-yellow);
+}
+a.stub__cta:focus-visible {
+  outline-color: #12140d;
+}
 .stub:hover {
   transform: rotate(0deg) translateY(-4px);
   filter: none;
@@ -1785,39 +1704,6 @@ a.m-cta:focus-visible {
     clip-path: none;
   }
 
-  /* Tour rows: flat, crisp colour spine, roomier button */
-  .trow {
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "date cta"
-      "meta meta";
-    row-gap: 8px;
-    padding: 14px 16px 14px 22px;
-    transform: none;
-    clip-path: none;
-  }
-  .trow__date {
-    grid-area: date;
-  }
-  .trow__meta {
-    grid-area: meta;
-  }
-  .trow__cta,
-  .trow__soon {
-    grid-area: cta;
-    justify-self: end;
-  }
-  .trow__cta {
-    padding: 13px 18px;
-  }
-  .trow::before {
-    width: 6px;
-    inset: 0 auto 0 0;
-    opacity: 1;
-  }
-  .trow__star {
-    display: none;
-  }
 
   /* Played: latest year only until "Earlier years" is tapped */
   .played__year--older {
@@ -1888,7 +1774,6 @@ a.m-cta:focus-visible {
   .mhero__ig,
   .m-cta,
   .m-cta__arrow,
-  .trow,
   .stub,
   .kwnav__link,
   .kwnav__arrow {

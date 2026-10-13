@@ -1,56 +1,33 @@
 import Doodle from "../Doodle";
+import TicketStub from "./TicketStub";
 
-// matches the painted strips on the Fall 2026 flyer: acid → lavender → cobalt
-const VARIANTS = ["acid", "lavender", "cobalt"];
-// gentle, fixed tilts so the column reads as pinned strips, not a table
-const TILTS = [-0.7, 0.6, -0.5, 0.8, -0.6, 0.5, -0.8, 0.6];
-
-function TourDateRow({ item, index }) {
-  const variant = VARIANTS[index % VARIANTS.length];
-  const hasTickets = item.status === "tickets" && item.ticketUrl;
-  const isTicketed = item.status === "tickets";
-
+function TicketButton({ show }) {
+  if (show.status === "tickets" && show.ticketUrl) {
+    return (
+      <a
+        className="m-cta stub__cta"
+        href={show.ticketUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Tickets
+        <Doodle name="arrowNE" className="m-cta__arrow" />
+        <span className="u-sr-only"> (opens in a new tab)</span>
+      </a>
+    );
+  }
   return (
-    <li
-      className={`trow trow--${variant}`}
-      style={{ "--tilt": `${TILTS[index % TILTS.length]}deg` }}
-    >
-      <span className="trow__date">{item.date}</span>
-
-      <span className="trow__meta">
-        <span className="trow__venue">{item.venue}</span>
-        <span className="trow__city">{item.city}</span>
-        <time className="u-sr-only">{item.fullDate}</time>
-      </span>
-
-      {hasTickets ? (
-        <a
-          className="m-cta trow__cta"
-          href={item.ticketUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Tickets
-          <Doodle name="arrowNE" className="m-cta__arrow" />
-          <span className="u-sr-only"> (opens in a new tab)</span>
-        </a>
-      ) : isTicketed ? (
-        <span className="m-cta trow__cta m-cta--pending" title="Tickets on sale soon">
-          Tickets
-          <span className="u-sr-only"> — on sale soon</span>
-          <Doodle name="arrowNE" className="m-cta__arrow" />
-        </span>
-      ) : (
-        <span className="trow__soon">Details soon</span>
-      )}
-
-      <Doodle name="star" className="trow__star" />
-    </li>
+    <span className="m-cta stub__cta m-cta--pending" title="Tickets on sale soon">
+      {show.status === "tickets" ? "Tickets" : "Details soon"}
+      <span className="u-sr-only"> — on sale soon</span>
+    </span>
   );
 }
 
 /**
- * Section 3 — Fall 2026 tour dates as painted strips (not a table).
+ * Section 3 — upcoming Fall 2026 dates as fresh ticket stubs, in the same
+ * format as the played archive below, with a tickets button in place of
+ * the PLAYED stamp.
  */
 export default function TourDates({ dates }) {
   return (
@@ -60,10 +37,25 @@ export default function TourDates({ dates }) {
         <span className="m-heading__note">tour dates</span>
       </h2>
 
-      <ol className="tour__list">
-        {dates.map((item, i) => (
-          <TourDateRow key={`${item.date}-${item.venue}`} item={item} index={i} />
-        ))}
+      <ol className="played__list">
+        {dates.map((item, i) => {
+          const show = {
+            ...item,
+            when: new Date(`${item.fullDate} UTC`).toISOString().slice(0, 10),
+            label: item.date,
+            city: item.city.replace(/, USA$/, ""),
+          };
+          return (
+            <TicketStub
+              key={`${item.date}-${item.venue}`}
+              show={show}
+              index={i}
+              className="stub--upcoming"
+            >
+              <TicketButton show={item} />
+            </TicketStub>
+          );
+        })}
       </ol>
     </section>
   );
