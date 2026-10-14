@@ -25,7 +25,7 @@ export default function ResearchQuestions({ projects, heading, line }) {
   const shown = field === "All" ? projects : projects.filter((p) => p.shortLabel === field);
 
   return (
-    <section className="rquestions" aria-label={heading || "Published work"}>
+    <section className="rquestions" aria-label={heading || "Research questions"}>
       {heading && <h2 className="r-heading">{heading}</h2>}
       {line && <p className="r-subline">{line}</p>}
 
