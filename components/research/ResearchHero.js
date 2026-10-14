@@ -44,7 +44,12 @@ export default function ResearchHero({ meta }) {
       </div>
 
       <div className="rhero__text">
-        <p className="r-label">{meta.label}</p>
+        {/* with no headline, the label is the page's h1 */}
+        {meta.question ? (
+          <p className="r-label">{meta.label}</p>
+        ) : (
+          <h1 className="r-label">{meta.label}</h1>
+        )}
 
         <div className="rhero__marks" aria-hidden="true">
           <span className="rhero__mark rhero__mark--retina">
@@ -58,7 +63,7 @@ export default function ResearchHero({ meta }) {
           </span>
         </div>
 
-        <h1 className="rhero__q">{meta.question}</h1>
+        {meta.question && <h1 className="rhero__q">{meta.question}</h1>}
 
         {intro.map((para, i) => (
           <p className="rhero__support" key={i}>

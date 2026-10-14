@@ -31,13 +31,10 @@
 
 export const researchMeta = {
   label: "Research",
-  question: "Tracing a path through vision, disease, and systems",
 
   // hero intro — a short personal research journey, first person
   intro: [
-    "My research moves across molecular biology, clinical ophthalmology, optical modeling, and health systems — always asking what can be changed, and how.",
     "I began doing research at 16 at the American University of Beirut, under the mentorship of Dr. Shady Awwad. After moving to Boston, that path continued at the Schepens Eye Research Institute of Mass Eye and Ear, where I joined Dr. Leo Kim’s lab and began pursuing questions spanning retina, translational therapeutics, and clinical vision science. Along the way, I’ve also had the privilege of pursuing collaborative investigations with Dr. Mohammad Dahrouj at Mass Eye and Ear and with Dr. Kimberly Samaha through the Born Global Foundation.",
-    "Taken together, research has become a central part of how I approach medicine: following curiosity, asking better questions, and learning from scientists and collaborators who continually reshape how I think.",
   ],
 
   // quieter supporting note directly after the intro
@@ -51,10 +48,6 @@ export const researchMeta = {
   builtThrough:
     "American University of Beirut · Mass Eye & Ear / Harvard Medical School · Born Global Foundation",
   tagline: "Science for a clearer tomorrow",
-
-  questionsHeading: "Published work and ongoing questions",
-  questionsLine:
-    "The projects below reflect work that has been published and shared publicly, alongside selected lines of inquiry that continue to evolve.",
 
   endingKicker: "The question is always:",
   endingStatement: "What can we change?",

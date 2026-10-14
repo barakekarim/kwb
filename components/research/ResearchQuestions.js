@@ -25,11 +25,9 @@ export default function ResearchQuestions({ projects, heading, line }) {
   const shown = field === "All" ? projects : projects.filter((p) => p.shortLabel === field);
 
   return (
-    <section className="rquestions" aria-labelledby="rq-h">
-      <h2 className="r-heading" id="rq-h">
-        {heading || "Published work and ongoing questions"}
-      </h2>
-      <p className="r-subline">{line}</p>
+    <section className="rquestions" aria-label={heading || "Published work"}>
+      {heading && <h2 className="r-heading">{heading}</h2>}
+      {line && <p className="r-subline">{line}</p>}
 
       <div className="rfilter" role="group" aria-label="Filter by field">
         {["All", ...fields].map((f) => {
