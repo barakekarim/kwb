@@ -2198,6 +2198,44 @@ a.stub__cta:focus-visible {
   color: rgba(242, 240, 231, 0.48);
 }
 
+/* Google Scholar pill, right under the instrument row */
+.rhero__scholar {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: clamp(16px, 2.4vw, 22px);
+  padding: 9px 16px;
+  border: 1.5px solid rgba(242, 240, 231, 0.22);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.rhero__scholar svg:first-child {
+  width: 17px;
+  height: 17px;
+}
+.rhero__scholar-arrow {
+  width: 15px;
+  height: 9px;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+.rhero__scholar:hover {
+  border-color: var(--accent);
+  background: rgba(188, 203, 50, 0.08);
+}
+.rhero__scholar:hover .rhero__scholar-arrow {
+  transform: translateX(3px);
+}
+.rhero__scholar:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 /* interactive instrument row — retina / eye / glasses */
 .rhero__marks {
   margin-top: clamp(16px, 2.4vw, 22px);

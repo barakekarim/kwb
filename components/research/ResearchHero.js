@@ -1,4 +1,8 @@
 import ScientificDoodle from "./ScientificDoodle";
+import SocialIcon from "../SocialIcon";
+import { socials } from "../../data/content";
+
+const scholar = socials.find((s) => s.key === "scholar");
 
 /**
  * Section 1 — Research hero: centred label, headline, first-person journey
@@ -64,6 +68,20 @@ export default function ResearchHero({ meta }) {
         </div>
 
         {meta.question && <h1 className="rhero__q">{meta.question}</h1>}
+
+        {scholar && (
+          <a
+            className="rhero__scholar"
+            href={scholar.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SocialIcon name="scholar" />
+            {scholar.label}
+            <ScientificDoodle name="arrow" className="rhero__scholar-arrow" />
+            <span className="u-sr-only"> (opens in a new tab)</span>
+          </a>
+        )}
 
         {intro.map((para, i) => (
           <p className="rhero__support" key={i}>
