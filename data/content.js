@@ -13,9 +13,9 @@ export const socials = [
     href: "https://www.linkedin.com/in/karim-barake/",
   },
   {
-    key: "orcid",
-    label: "ORCID",
-    href: "https://orcid.org/0009-0000-8912-9166",
+    key: "scholar",
+    label: "Google Scholar",
+    href: "https://scholar.google.com/citations?user=U8EavQgAAAAJ&hl=en",
   },
   {
     key: "mail",

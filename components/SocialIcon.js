@@ -23,13 +23,13 @@ export default function SocialIcon({ name }) {
           <circle cx="12" cy="12" r="0.7" fill="currentColor" stroke="none" />
         </svg>
       );
-    case "orcid":
+    case "scholar":
+      // mortarboard, drawn in the same line weight as the others
       return (
-        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-          <circle cx="12" cy="12" r="9.2" />
-          <path d="M9 8.8v6.6" strokeLinecap="round" />
-          <circle cx="9" cy="6.6" r="0.55" fill="currentColor" stroke="none" />
-          <path d="M12.4 8.8h2.1a3.2 3.2 0 0 1 0 6.6h-2.1z" />
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M2.5 9.5 12 4.5l9.5 5-9.5 5z" />
+          <path d="M6.5 11.6v4.2c0 1.4 2.5 2.7 5.5 2.7s5.5-1.3 5.5-2.7v-4.2" />
+          <path d="M21.5 9.5v5" />
         </svg>
       );
     case "mail":
